@@ -1,4 +1,4 @@
-# [MEGA Supermarket](file:///C:/Users/daria/OneDrive%20-%20Pontificia%20Universidad%20Cat%C3%B3lica%20Madre%20y%20Maestra/Maestria/Ciclo%204/Programming%20the%20internet/Semana%202/startbootstrap-sb-admin-2-gh-pages/index.html)
+# [MEGA Supermarket]
 
 [SB Admin 2](https://startbootstrap.com/theme/sb-admin-2/) is an open source admin dashboard theme for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).
 
