@@ -2,11 +2,9 @@
 
 Mega Supermarket es un supermercado comprometido con ofrecer una amplia variedad de productos de calidad al mejor precio. Contamos con secciones de alimentos frescos, electrodomésticos, belleza y hogar, brindando una experiencia de compra cómoda y accesible para toda la familia. Además, cada semana ofrecemos descuentos y promociones para ayudarte a ahorrar más en tus compras.
 
-## Preview
+## Vista Previa
 
 [![SB Admin 2 Preview](https://assets.startbootstrap.com/img/screenshots/themes/sb-admin-2.png)](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)
-
-**[Launch Live Preview](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)**
 
 ## Status
 
