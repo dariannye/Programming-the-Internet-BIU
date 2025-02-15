@@ -4,9 +4,9 @@ Mega Supermarket es un supermercado comprometido con ofrecer una amplia variedad
 
 ## Vista Previa
 Página Principal
-[Vista Previa de MEGA Supermarket](assets/Principal.png)
+![Vista Previa de MEGA Supermarket](assets/Principal.png)
 Página Principal con vista celular
-[Vista Previa Celular de MEGA Supermarket](assets/PrincipalCelular.png)
+![Vista Previa Celular de MEGA Supermarket](assets/PrincipalCelular.png)
 
 
 ## Uso
