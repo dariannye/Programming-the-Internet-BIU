@@ -8,6 +8,15 @@ Página Principal
 Página Principal con vista celular
 ![Vista Previa Celular de MEGA Supermarket](assets/PrincipalCelular.png)
 
+## Validaciones
+Validación en el Login
+![Validacion login1](assets/validacion1.png)
+![Validacion login2](assets/validacion2.png)
+
+Validación en Register
+![Validacion register1](assets/validacion3.png)
+![Validacion register2](assets/validacion4.png)
+
 
 ## Uso
 
