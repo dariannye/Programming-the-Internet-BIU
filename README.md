@@ -15,7 +15,7 @@ Página Principal con vista celular
 ![Validacion login1](assets/validacion1.png)  
 
 #### Imagen 2  
-![Validacion login2](assets/validacion 2.png)  
+![Validacion login2](assets/validacion2.png)  
 
 ### Validación en Register
 #### Imagen 1  
