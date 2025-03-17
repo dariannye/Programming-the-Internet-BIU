@@ -1,0 +1,63 @@
+/* Estilos generales */
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #eceff1;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.header-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #607d8b;
+  padding: 15px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Branding */
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+/* Icono de la marca */
+.brand-icon {
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+}
+
+/* Contenido principal */
+.main-content {
+  padding: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.app-footer {
+  background: #455a64;
+  color: #ffffff;
+  padding: 1.5rem 2.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 1rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
