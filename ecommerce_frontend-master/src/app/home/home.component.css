@@ -1,0 +1,46 @@
+.home-page {
+    font-family: Arial, sans-serif;
+    background-color: #ffcc99; /* Fondo Naranja Claro */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .background {
+    background-color: #ffcc99;
+    padding: 40px 20px;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .images {
+    margin: 20px 0;
+  }
+  
+  .product-image {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  

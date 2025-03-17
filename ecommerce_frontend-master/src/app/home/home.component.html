@@ -1,0 +1,27 @@
+<div class="home-page">
+    <div class="background">
+      <h1>Bienvenido a MEGA Supermarket</h1>
+      <p>Crea y registra nuevos productos.</p>
+  
+      <!-- Mostrar imágenes desde assets -->
+      <div class="images">
+        <img src="assets/bellezaysalud.png" alt="Imagen 1" class="product-image">
+        <img src="assets/Spermercado.png" alt="Imagen 2" class="product-image">
+        <img src="assets/Electrodomesticos.png" alt="Imagen 2" class="product-image">
+        <img src="assets/hogar.png" alt="Imagen 2" class="product-image">
+      </div>
+  
+      <!-- Incluir el formulario para crear un producto -->
+      <app-product-form (productRegistered)="addProduct($event)"></app-product-form>  <!-- Agregar el formulario aquí -->
+  
+      <div *ngIf="products.length > 0">
+        <h3>Productos Registrados:</h3>
+        <ul>
+          <li *ngFor="let product of products">
+            <strong>{{ product.name }}</strong> - {{ product.category }} - {{ product.price }} - {{ product.stock }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
