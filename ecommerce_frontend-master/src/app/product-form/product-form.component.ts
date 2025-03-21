@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,8 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent {
-  @Output() productRegistered: EventEmitter<any> = new EventEmitter();  // Emite evento hacia el parent
+export class ProductFormComponent implements OnChanges {
+  @Output() productRegistered: EventEmitter<any> = new EventEmitter();
+  @Input() selectedProduct: any = null;
 
   productForm: FormGroup;
 
@@ -24,21 +25,22 @@ export class ProductFormComponent {
     });
   }
 
-  submitForm() {
-    if (this.productForm.valid) {
-      this.productRegistered.emit(this.productForm.value);  // Emitir el producto registrado al padre
-      this.productForm.reset();  // Resetear formulario después de enviar
+  ngOnChanges() {
+    if (this.selectedProduct) {
+      this.productForm.patchValue(this.selectedProduct);
     } else {
-      this.validateFormFields();  // Validar campos manualmente
+      this.productForm.reset();
     }
   }
 
-  // Método adicional para asegurarse de que los errores se disparen cuando el formulario no es válido
-  validateFormFields() {
-    for (const control in this.productForm.controls) {
-      if (this.productForm.controls.hasOwnProperty(control)) {
-        this.productForm.controls[control].markAsTouched();
-      }
+  submitForm() {
+    if (this.productForm.invalid) {
+      this.productForm.markAllAsTouched(); // ✅ Muestra los errores al intentar registrar
+      return;
     }
+
+    this.productRegistered.emit({ ...this.selectedProduct, ...this.productForm.value });
+    this.productForm.reset();
   }
 }
+

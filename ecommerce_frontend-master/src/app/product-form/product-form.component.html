@@ -1,31 +1,44 @@
 <form [formGroup]="productForm" (ngSubmit)="submitForm()">
   <div class="form-container">
-    <h2>Registrar Nuevo Producto</h2>
-
-    <label for="name">Nombre del Producto:</label>
-    <input id="name" type="text" formControlName="name">
-    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error-message">
-      El nombre debe tener al menos 3 caracteres.
+    <div>
+      <label>Nombre del producto:</label>
+      <input type="text" formControlName="name">
+      <div class="error" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+        <small *ngIf="productForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+        <small *ngIf="productForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+      </div>
     </div>
-
-    <label for="category">Categoría:</label>
-    <input id="category" type="text" formControlName="category">
-    <div *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="error-message">
-      La categoría es obligatoria.
+  
+    <div>
+      <label>Categoría:</label>
+      <input type="text" formControlName="category">
+      <div class="error" *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
+        <small *ngIf="productForm.get('category')?.errors?.['required']">La categoría es obligatoria.</small>
+      </div>
     </div>
-
-    <label for="price">Precio:</label>
-    <input id="price" type="number" formControlName="price">
-    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="error-message">
-      Ingresa un precio válido (máximo 2 decimales).
+  
+    <div>
+      <label>Precio:</label>
+      <input type="number" formControlName="price">
+      <div class="error" *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+        <small *ngIf="productForm.get('price')?.errors?.['required']">El precio es obligatorio.</small>
+        <small *ngIf="productForm.get('price')?.errors?.['pattern']">Debe ser un número válido.</small>
+      </div>
     </div>
-
-    <label for="stock">Stock Disponible:</label>
-    <input id="stock" type="number" formControlName="stock">
-    <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="error-message">
-      Debes ingresar un número entero.
+  
+    <div>
+      <label>Stock:</label>
+      <input type="number" formControlName="stock">
+      <div class="error" *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched">
+        <small *ngIf="productForm.get('stock')?.errors?.['required']">El stock es obligatorio.</small>
+        <small *ngIf="productForm.get('stock')?.errors?.['pattern']">Debe ser un número entero.</small>
+      </div>
     </div>
+  
+    <button type="submit" [disabled]="productForm.invalid">Registrar Producto</button>
 
-    <button type="submit" [disabled]="productForm.invalid" class="submit-btn">Registrar Producto</button>
   </div>
+  
 </form>
+
+
