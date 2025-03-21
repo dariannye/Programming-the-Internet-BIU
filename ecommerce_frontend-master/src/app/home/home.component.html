@@ -5,14 +5,14 @@
   
       <!-- Mostrar imágenes desde assets -->
       <div class="images">
-        <img src="assets/bellezaysalud.png" alt="Imagen 1" class="product-image">
-        <img src="assets/Spermercado.png" alt="Imagen 2" class="product-image">
-        <img src="assets/Electrodomesticos.png" alt="Imagen 2" class="product-image">
-        <img src="assets/hogar.png" alt="Imagen 2" class="product-image">
+        <img src="img/bellezaysalud.png" alt="Imagen 1" class="product-image">
+        <img src="img/Supermercado.png" alt="Imagen 2" class="product-image">
+        <img src="img/Electrodomesticos.png" alt="Imagen 3" class="product-image">
+        <img src="img/hogar.png" alt="Imagen 4" class="product-image">
       </div>
   
       <!-- Incluir el formulario para crear un producto -->
-      <app-product-form (productRegistered)="addProduct($event)"></app-product-form>  <!-- Agregar el formulario aquí -->
+      <app-product-form (productRegistered)="addProduct($event)"></app-product-form> 
   
       <div *ngIf="products.length > 0">
         <h3>Productos Registrados:</h3>

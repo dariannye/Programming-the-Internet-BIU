@@ -1,0 +1,31 @@
+<form [formGroup]="productForm" (ngSubmit)="submitForm()">
+  <div class="form-container">
+    <h2>Registrar Nuevo Producto</h2>
+
+    <label for="name">Nombre del Producto:</label>
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error-message">
+      El nombre debe tener al menos 3 caracteres.
+    </div>
+
+    <label for="category">Categoría:</label>
+    <input id="category" type="text" formControlName="category">
+    <div *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="error-message">
+      La categoría es obligatoria.
+    </div>
+
+    <label for="price">Precio:</label>
+    <input id="price" type="number" formControlName="price">
+    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="error-message">
+      Ingresa un precio válido (máximo 2 decimales).
+    </div>
+
+    <label for="stock">Stock Disponible:</label>
+    <input id="stock" type="number" formControlName="stock">
+    <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="error-message">
+      Debes ingresar un número entero.
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid" class="submit-btn">Registrar Producto</button>
+  </div>
+</form>
