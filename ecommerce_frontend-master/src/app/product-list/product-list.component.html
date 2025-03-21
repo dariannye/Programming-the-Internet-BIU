@@ -1,0 +1,23 @@
+<table>
+  <thead>
+      <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+              <button (click)="edit(product)">Editar</button>
+              <button (click)="delete(product.id)">Eliminar</button>
+          </td>
+      </tr>
+  </tbody>
+</table>
