@@ -24,6 +24,12 @@ Página Principal con vista celular
 #### Imagen 2  
 ![Validacion register2](assets/validacion4.png)  
 
+## MEGA Supermarket Angular
+![Página Principal de MEGA Supermarket](assets/home.png)
+
+## Validaciones 
+### Validación en Producto
+![Validacion producto](assets/validacionproducto.png)  
 
 
 ## Uso
