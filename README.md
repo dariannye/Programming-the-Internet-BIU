@@ -34,6 +34,16 @@ Página Principal con vista celular
 ### Validación en Producto
 ![Validacion producto](assets/validacionproducto.png)  
 
+## MEGA Supermarket Backend
+### Creación de un producto desde Postman
+![Producto](assets/productocreado.png)
+
+### Lista de productos creados en localhost
+![Productos](assets/listaproductos.png)
+
+### Base de datos actualizada
+![Base de datos](assets/basededatos.png)
+
 
 ## Uso
 
