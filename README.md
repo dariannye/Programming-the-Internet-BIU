@@ -27,6 +27,9 @@ Página Principal con vista celular
 ## MEGA Supermarket Angular
 ![Página Principal de MEGA Supermarket](assets/home.png)
 
+## Lista de Productos agregados
+![Productos agregados](assets/productoAgregados.png)
+
 ## Validaciones 
 ### Validación en Producto
 ![Validacion producto](assets/validacionproducto.png)  
