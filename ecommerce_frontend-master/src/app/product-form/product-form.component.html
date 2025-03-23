@@ -2,27 +2,27 @@
   <div class="form-container">
     <div>
       <label>Nombre del producto:</label>
-      <input type="text" formControlName="name">
-      <div class="error" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
-        <small *ngIf="productForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
-        <small *ngIf="productForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
+      <input type="text" formControlName="nombre">
+      <div class="error" *ngIf="productForm.get('nombre')?.invalid && productForm.get('nombre')?.touched">
+        <small *ngIf="productForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
+        <small *ngIf="productForm.get('nombre')?.errors?.['minlength']">Debe tener al menos 3 caracteres.</small>
       </div>
     </div>
   
     <div>
       <label>Categoría:</label>
-      <input type="text" formControlName="category">
-      <div class="error" *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
-        <small *ngIf="productForm.get('category')?.errors?.['required']">La categoría es obligatoria.</small>
+      <input type="text" formControlName="categoria">
+      <div class="error" *ngIf="productForm.get('categoria')?.invalid && productForm.get('categoria')?.touched">
+        <small *ngIf="productForm.get('categoria')?.errors?.['required']">La categoría es obligatoria.</small>
       </div>
     </div>
   
     <div>
       <label>Precio:</label>
-      <input type="number" formControlName="price">
-      <div class="error" *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
-        <small *ngIf="productForm.get('price')?.errors?.['required']">El precio es obligatorio.</small>
-        <small *ngIf="productForm.get('price')?.errors?.['pattern']">Debe ser un número válido.</small>
+      <input type="number" formControlName="precio">
+      <div class="error" *ngIf="productForm.get('precio')?.invalid && productForm.get('precio')?.touched">
+        <small *ngIf="productForm.get('precio')?.errors?.['required']">El precio es obligatorio.</small>
+        <small *ngIf="productForm.get('precio')?.errors?.['pattern']">Debe ser un número válido.</small>
       </div>
     </div>
   

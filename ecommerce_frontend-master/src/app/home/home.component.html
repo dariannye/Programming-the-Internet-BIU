@@ -1,36 +1,36 @@
 <div class="home-page">
-  <div class="background">
+    <div class="background">
       <h1>Bienvenido a MEGA Supermarket</h1>
       <p>Gestiona tus productos fácilmente.</p>
-
+  
       <!-- Imágenes de categorías -->
       <div class="images">
-          <img src="img/bellezaysalud.png" alt="Imagen 1" class="product-image">
-          <img src="img/Supermercado.png" alt="Imagen 2" class="product-image">
-          <img src="img/Electrodomesticos.png" alt="Imagen 3" class="product-image">
-          <img src="img/hogar.png" alt="Imagen 4" class="product-image">
+        <img src="img/bellezaysalud.png" alt="Imagen 1" class="product-image">
+        <img src="img/Supermercado.png" alt="Imagen 2" class="product-image">
+        <img src="img/Electrodomesticos.png" alt="Imagen 3" class="product-image">
+        <img src="img/hogar.png" alt="Imagen 4" class="product-image">
       </div>
-
+  
       <!-- Botón para mostrar el formulario -->
       <button (click)="toggleForm()" class="btn-add">Agregar Producto</button>
-
+  
       <!-- Formulario de producto (se muestra solo si showForm es true) -->
       <app-product-form 
           *ngIf="showForm" 
           (productRegistered)="addOrUpdateProduct($event)"
           [selectedProduct]="selectedProduct">
       </app-product-form>
-
+  
       <!-- Buscar producto -->
       <input type="text" placeholder="Buscar producto..." (input)="searchProduct($event)" class="search-box">
-
+  
       <!-- Lista de productos -->
       <app-product-list 
           [products]="filteredProducts"
           (editProduct)="editProduct($event)"
           (deleteProduct)="deleteProduct($event)">
       </app-product-list>
+    </div>
   </div>
-</div>
-
+  
   

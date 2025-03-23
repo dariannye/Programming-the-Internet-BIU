@@ -11,6 +11,17 @@ class Productos extends ResourceController
 {
     protected $modelName = 'App\Models\ProductoModel';
     protected $format = 'json';
+    public function __construct() {
+        // Permitir CORS para todas las solicitudes
+        header("Access-Control-Allow-Origin: http://localhost:4200/"); 
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
+        
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            exit();
+        }
+    }
 
     public function index()
     {
@@ -19,6 +30,11 @@ class Productos extends ResourceController
 
       // POST: Crear producto
       public function create() {
+        header("Access-Control-Allow-Origin: http://localhost:4200/"); 
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization");
+        header("Access-Control-Allow-Credentials: true");
+
         $data = $this->request->getJSON(true);
         if (!$this->model->insert($data)) {
             return $this->failValidationErrors($this->model->errors());
