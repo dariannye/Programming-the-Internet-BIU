@@ -10,9 +10,9 @@
   </thead>
   <tbody>
       <tr *ngFor="let product of products">
-          <td>{{ product.name }}</td>
-          <td>{{ product.category }}</td>
-          <td>{{ product.price | currency }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.categoria }}</td>
+          <td>{{ product.precio | currency }}</td>
           <td>{{ product.stock }}</td>
           <td>
               <button (click)="edit(product)">Editar</button>

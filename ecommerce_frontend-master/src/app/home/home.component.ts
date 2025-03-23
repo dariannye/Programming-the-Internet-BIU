@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
   searchProduct(event: any) {
     const query = event.target.value.toLowerCase();
     this.filteredProducts = this.products.filter(p =>
-      p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
+      p.nombre.toLowerCase().includes(query) || p.categoria.toLowerCase().includes(query)
     );
   }
 }
