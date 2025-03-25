@@ -30,6 +30,7 @@ class App extends BaseConfig
      * @var list<string>
      */
     public array $allowedHostnames = [];
+    public $logThreshold = 4;
 
     /**
      * --------------------------------------------------------------------------

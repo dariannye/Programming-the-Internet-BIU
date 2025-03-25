@@ -89,7 +89,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, list<string>>
      */
-    public array $methods = ['get' => ['cors'],];
+    public array $methods = ['GET' => ['cors'],];
 
     /**
      * List of filter aliases that should run on any
