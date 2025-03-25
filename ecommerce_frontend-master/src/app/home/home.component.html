@@ -1,5 +1,7 @@
 <div class="home-page">
     <div class="background">
+    <app-login *ngIf="!isUserLoggedIn"></app-login>
+    <button (click)="logout()">Logout</button>
       <h1>Bienvenido a MEGA Supermarket</h1>
       <p>Gestiona tus productos fácilmente.</p>
   

@@ -2,33 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { ProductListComponent } from '../product-list/product-list.component';
-import { ProductService } from '../services/product.service'; // Asegúrate de importar el ProductService
+import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
+import { LoginComponent } from '../login/login.component'; 
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProductFormComponent, ProductListComponent],
+  imports: [CommonModule, ProductFormComponent, ProductListComponent, LoginComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isUserLoggedIn = false; 
   products: any[] = [];
   filteredProducts: any[] = [];
   showForm = false;
   selectedProduct: any = null;
+  
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.checkLoginStatus();
     this.loadProducts(); // Cargar los productos al inicio
   }
+  checkLoginStatus() {
+    this.isUserLoggedIn = this.authService.isAuthenticated(); 
+  }
+
 
   // Método para cargar los productos desde el backend
   loadProducts() {
     this.productService.getProducts().subscribe((data) => {
       this.products = data;
-      this.filteredProducts = [...this.products]; // Inicializar la lista filtrada
+      this.filteredProducts = [...this.products]; 
     });
   }
 
@@ -73,6 +83,10 @@ export class HomeComponent implements OnInit {
     this.filteredProducts = this.products.filter(p =>
       p.nombre.toLowerCase().includes(query) || p.categoria.toLowerCase().includes(query)
     );
+  }
+
+  logout() {
+    this.authService.logout(); 
   }
 }
 
