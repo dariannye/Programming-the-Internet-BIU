@@ -4,9 +4,10 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/api": "/productos"
+      "^/api": ""
     }
   }
 }
+
 
   
