@@ -44,6 +44,15 @@ Página Principal con vista celular
 ### Base de datos actualizada
 ![Base de datos](assets/basededatos.png)
 
+### Login con Angular
+![Login1](assets/login2.png)
+
+### Validacion Login
+![Login2](assets/login.png)
+
+### Home page luego de login
+![Home Login](assets/homelogin.png)
+
 
 ## Uso
 
