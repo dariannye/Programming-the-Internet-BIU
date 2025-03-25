@@ -26,5 +26,15 @@ $routes->group('', ['filter' => 'cors'], static function (RouteCollection $route
     $routes->options('product/(:any)', static function () {});
 });
 
+$routes->post('ordenes', 'OrderController::createOrder', ['filter' => 'auth']);
+$routes->get('ordenes', 'OrderController::getOrders', ['filter' => 'auth']);
+$routes->delete('ordenes/(:num)', 'OrderController::deleteOrder/$1', ['filter' => 'auth']);
+
+$routes->post('login', 'AuthController::login');
+$routes->post('register', 'AuthController::register');
+
+
+
+
 
 
