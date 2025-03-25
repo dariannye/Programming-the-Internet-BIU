@@ -1,14 +1,17 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { ProductService } from './app/services/product.service';
 
-// Arrancar la aplicación con el componente standalone
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
-    ProductService,
-  ],
+    provideHttpClient(), 
+    provideRouter([
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) },
+      { path: 'home', loadComponent: () => import('./app/home/home.component').then(m => m.HomeComponent) },
+    ])
+  ]
 }).catch(err => console.error(err));
+
 
