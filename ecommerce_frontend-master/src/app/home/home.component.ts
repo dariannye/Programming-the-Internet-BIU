@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { ProductListComponent } from '../product-list/product-list.component';
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   selectedProduct: any = null;
   
 
-  constructor(private productService: ProductService, private authService: AuthService) {}
+  constructor(private productService: ProductService, private authService: AuthService,  private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.checkLoginStatus();
@@ -48,20 +48,56 @@ export class HomeComponent implements OnInit {
   }
 
   // Método para agregar o actualizar un producto
+ /*addOrUpdateProduct(product: any) {
+      console.log('Llamando a addOrUpdateProduct con:', product);
+    
+      if (this.selectedProduct) {
+        // Si se seleccionó un producto, solo pasa al formulario para actualizar
+        this.selectedProduct = product; // Este producto se pasa a ProductFormComponent
+      } else {
+        // Crear un nuevo producto desde Home
+        this.productService.addProduct(product).subscribe((newProduct) => {
+          this.products.push(newProduct);
+          this.filteredProducts = [...this.products];
+        });
+      }
+      this.showForm = false;
+  }*/
+ /* addOrUpdateProduct(product: any) {
+    console.log('Llamando a addOrUpdateProduct con:', product);
+    
+    if (this.selectedProduct) {
+      // Actualizar producto en la lista local (sin llamar al servicio)
+      const index = this.products.findIndex(p => p.id === this.selectedProduct.id);
+      if (index !== -1) {
+        this.products[index] = product;
+      }
+      this.filteredProducts = [...this.products]; // Actualiza la lista filtrada
+    } else {
+      // Crear un nuevo producto directamente en la lista local
+      this.products.push(product);
+      this.filteredProducts = [...this.products]; // Actualiza la lista filtrada
+    }
+    this.showForm = false;
+    this.cdr.detectChanges(); 
+  }*/
   addOrUpdateProduct(product: any) {
     if (this.selectedProduct) {
       // Actualizar producto
-      this.productService.updateProduct(this.selectedProduct.id, product).subscribe(() => {
-        this.loadProducts(); // Recargar los productos después de la actualización
-      });
+      const index = this.products.findIndex(p => p.id === product.id);
+      if (index !== -1) {
+        this.products[index] = product;
+      }
     } else {
-      // Crear nuevo producto
-      this.productService.addProduct(product).subscribe(() => {
-        this.loadProducts(); // Recargar los productos después de agregar
-      });
+      // Agregar producto
+      this.products.push(product);
     }
-    this.showForm = false;
+
+    // Actualizar la lista filtrada
+    this.filteredProducts = [...this.products];
+    this.showForm = false; // Cerrar el formulario después de agregar o actualizar
   }
+  
 
   // Método para editar un producto
   editProduct(product: any) {
@@ -71,10 +107,12 @@ export class HomeComponent implements OnInit {
 
   // Método para eliminar un producto
   deleteProduct(productId: number) {
-  this.productService.deleteProduct(productId.toString()).subscribe(() => {
-    this.loadProducts(); // Recargar los productos después de la eliminación
-  });
-}
+    this.productService.deleteProduct(productId.toString()).subscribe(() => {
+      this.products = this.products.filter(p => p.id !== productId);
+      this.filteredProducts = [...this.products];
+    });
+  }
+  
 
 
   // Método para buscar productos

@@ -38,7 +38,7 @@ export class ProductFormComponent implements OnChanges {
     }
   }
 
-  submitForm() {
+  /*submitForm() {
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
       return;
@@ -49,7 +49,7 @@ export class ProductFormComponent implements OnChanges {
     if (this.isEditing && this.selectedProduct?.id) {
       this.productService.updateProduct(this.selectedProduct.id, productData).subscribe(() => {
         this.productRegistered.emit();
-        this.productForm.reset();
+        //this.productForm.reset();
       });
     } else {
       this.productService.addProduct(productData).subscribe(() => {
@@ -57,7 +57,39 @@ export class ProductFormComponent implements OnChanges {
         this.productForm.reset();
       });
     }
-  }
+  }*/
+    submitForm() {
+      if (this.productForm.invalid) {
+        this.productForm.markAllAsTouched();
+        return;
+      }
+  
+      const productData = this.productForm.value;
+  
+      if (this.isEditing) {
+        // Llamada al backend para editar el producto
+        this.productService.updateProduct(this.selectedProduct.id, productData).subscribe(
+          (updatedProduct) => {
+            // Emitir el producto actualizado a HomeComponent
+            this.productRegistered.emit(updatedProduct);
+          },
+          (error) => {
+            console.error('Error al actualizar el producto:', error);
+          }
+        );
+      } else {
+        // Llamada al backend para agregar el nuevo producto
+        this.productService.addProduct(productData).subscribe(
+          (newProduct) => {
+            // Emitir el nuevo producto a HomeComponent
+            this.productRegistered.emit(newProduct);
+          },
+          (error) => {
+            console.error('Error al agregar el producto:', error);
+          }
+        );
+      }
+    }
 }
 
 

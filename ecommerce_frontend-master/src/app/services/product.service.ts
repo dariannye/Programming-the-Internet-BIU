@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root' 
 })
 export class ProductService {
-  private apiUrl = '/api/productos';  // Se usa el proxy en lugar de la URL completa
+  private apiUrl = '/api/productos';  
 
   constructor(private http: HttpClient) {}
 
