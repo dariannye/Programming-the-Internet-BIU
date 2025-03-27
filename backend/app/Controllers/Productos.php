@@ -12,13 +12,9 @@ class Productos extends ResourceController
     protected $modelName = 'App\Models\ProductoModel';
     protected $format = 'json';
     public function __construct() {
-        // Permitir CORS para todas las solicitudes
-        header("Access-Control-Allow-Origin: http://localhost:4200/"); 
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-        header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
-        
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            header("HTTP/1.1 200 OK");
             exit();
         }
     }
@@ -30,10 +26,6 @@ class Productos extends ResourceController
 
       // POST: Crear producto
       public function create() {
-        header("Access-Control-Allow-Origin: http://localhost:4200/"); 
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-        header("Access-Control-Allow-Headers: Content-Type, Authorization");
-        header("Access-Control-Allow-Credentials: true");
 
         $data = $this->request->getJSON(true);
         if (!$this->model->insert($data)) {
@@ -51,11 +43,25 @@ class Productos extends ResourceController
 
      // PUT: Actualizar producto
      public function update($id = null) {
-        $data = $this->request->getJSON(true);
+        //$data = $this->request->getJSON(true);
+        $data = json_decode($this->request->getBody(), true);
+
+        log_message('debug', 'Datos recibidos en update: ' . json_encode($data));
+        if (!$data) {
+            log_message('error', 'Los datos están vacíos o nulos.');
+            return $this->failValidationErrors('Datos nulos o vacíos.');
+        }
+    
         if (!$this->model->update($id, $data)) {
             return $this->failValidationErrors($this->model->errors());
         }
         return $this->respondUpdated(['message' => 'Producto actualizado']);
+
+
+        /*if (!$this->model->update($id, $data)) {
+            return $this->failValidationErrors($this->model->errors());
+        }
+        return $this->respondUpdated(['message' => 'Producto actualizado']);*/
     }
 
 
