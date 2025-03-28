@@ -6,12 +6,13 @@ import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
 import { LoginComponent } from '../login/login.component'; 
 import { AuthService } from '../services/auth.service';
+import {ChatbotComponent} from '../chatbot/chatbot.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProductFormComponent, ProductListComponent, LoginComponent],
+  imports: [CommonModule, ProductFormComponent, ProductListComponent, LoginComponent, ChatbotComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
