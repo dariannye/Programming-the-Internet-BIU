@@ -32,6 +32,9 @@ $routes->delete('ordenes/(:num)', 'OrderController::deleteOrder/$1', ['filter' =
 
 $routes->post('login', 'AuthController::login');
 $routes->post('register', 'AuthController::register');
+$routes->post('chatbot/obtener_respuesta', 'Chatbot::obtener_respuesta');
+
+
 
 
 
