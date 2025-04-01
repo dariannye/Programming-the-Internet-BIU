@@ -24,6 +24,26 @@ class Productos extends ResourceController
         return $this->respond($this->model->findAll());
     }
 
+    public function showByName($nombre)
+    {
+        $producto = $this->model->where('nombre', $nombre)->first();
+        return $producto ? $this->respond($producto) : $this->failNotFound('Producto no encontrado');
+    }
+
+    // Método para obtener productos por categoría
+    public function showByCategoria($categoria)
+    {
+        log_message('debug', "Buscando productos en la categoría: {$categoria}");
+        $productos = $this->model->where('categoria', $categoria)->findAll();
+
+        if (!$productos) {
+            return $this->failNotFound("No se encontraron productos en la categoría {$categoria}");
+        }
+
+        return $this->respond($productos);
+    }
+
+
       // POST: Crear producto
       public function create() {
 
