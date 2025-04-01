@@ -33,7 +33,10 @@
           (deleteProduct)="deleteProduct($event)">
       </app-product-list>
 
-      <app-chatbot></app-chatbot>
+      <button (click)="toggleChatbot()" class="btn-chatbot">Abrir Chatbot</button>
+      <div class="chatbot-container" *ngIf="showChatbot">
+        <app-chatbot></app-chatbot>
+    </div>
 
 
 
