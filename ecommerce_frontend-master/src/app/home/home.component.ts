@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   filteredProducts: any[] = [];
   showForm = false;
   selectedProduct: any = null;
+  showChatbot = false;
   
 
   constructor(private productService: ProductService, private authService: AuthService,  private cdr: ChangeDetectorRef) {}
@@ -46,6 +47,10 @@ export class HomeComponent implements OnInit {
   toggleForm() {
     this.showForm = !this.showForm;
     this.selectedProduct = null;
+  }
+
+  toggleChatbot() {
+    this.showChatbot = !this.showChatbot;
   }
 
   // Método para agregar o actualizar un producto
