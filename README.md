@@ -54,7 +54,7 @@ Página Principal con vista celular
 ![Home Login](assets/homelogin.png)
 
 ### Integración de chatbot
-![Chatbot](assets/chatbot.png)
+![Chatbot](assets/chatbot2.png)
 
 
 ## Uso
