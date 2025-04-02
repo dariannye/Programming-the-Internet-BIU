@@ -1,5 +1,25 @@
 <div class="home-page">
     <div class="background">
+      <div class="cart-container">
+        <button class="cart-button" (click)="toggleCart()">
+          🛒 <span *ngIf="cart.length > 0" class="cart-count">{{ cart.length }}</span>
+        </button>
+      
+        <div class="cart-dropdown" *ngIf="cartVisible">
+          <h3>Carrito</h3>
+          <ul>
+            <li *ngFor="let item of cart">
+              {{ item.nombre }} (x{{ item.cantidad }}) - {{ item.precio | currency }}
+            </li>
+          </ul>
+          <div class="cart-total">
+            <strong>Total: {{ totalCompra | currency }}</strong>
+        </div>
+          <button (click)="checkout()">Finalizar Compra</button>
+        </div>
+      </div>
+      
+      
     <app-login *ngIf="!isUserLoggedIn"></app-login>
     <button (click)="logout()">Logout</button>
       <h1>Bienvenido a MEGA Supermarket</h1>

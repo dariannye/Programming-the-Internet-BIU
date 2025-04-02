@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { LoginComponent } from '../login/login.component'; 
 import { AuthService } from '../services/auth.service';
 import {ChatbotComponent} from '../chatbot/chatbot.component';
+import { CartService } from '../services/cart.service';
 
 
 @Component({
@@ -17,20 +18,29 @@ import {ChatbotComponent} from '../chatbot/chatbot.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  constructor(private productService: ProductService, private authService: AuthService,  private cdr: ChangeDetectorRef, private cartService: CartService) {}
   isUserLoggedIn = false; 
   products: any[] = [];
   filteredProducts: any[] = [];
   showForm = false;
   selectedProduct: any = null;
   showChatbot = false;
-  
-
-  constructor(private productService: ProductService, private authService: AuthService,  private cdr: ChangeDetectorRef) {}
+  cart: any[] = [];
+  cartVisible = false;
+  totalCompra: number = 0;
 
   ngOnInit(): void {
     this.checkLoginStatus();
-    this.loadProducts(); // Cargar los productos al inicio
+    this.loadProducts();
+    this.cartService.getUpdatedCart().subscribe((cart: any[]) => {
+      console.log('Carrito actualizado en ngOnInit:', cart);
+      this.cart = cart;
+      this.totalCompra = this.cartService.getTotal();
+    });
   }
+  
+  
+  
   checkLoginStatus() {
     this.isUserLoggedIn = this.authService.isAuthenticated(); 
   }
@@ -52,41 +62,40 @@ export class HomeComponent implements OnInit {
   toggleChatbot() {
     this.showChatbot = !this.showChatbot;
   }
+  toggleCart() {
+    console.log('Carrito actual:', this.cart);
+    this.cartVisible = !this.cartVisible;
+    this.totalCompra = this.cartService.getTotal();
+    console.log('Cart visible:', this.cartVisible);
+  }
 
-  // Método para agregar o actualizar un producto
- /*addOrUpdateProduct(product: any) {
-      console.log('Llamando a addOrUpdateProduct con:', product);
-    
-      if (this.selectedProduct) {
-        // Si se seleccionó un producto, solo pasa al formulario para actualizar
-        this.selectedProduct = product; // Este producto se pasa a ProductFormComponent
-      } else {
-        // Crear un nuevo producto desde Home
-        this.productService.addProduct(product).subscribe((newProduct) => {
-          this.products.push(newProduct);
-          this.filteredProducts = [...this.products];
+  addToCart(product: any, quantity: number) {
+    if (quantity > 0 && quantity <= product.stock) {
+        this.cartService.addToCart(product.id, quantity).subscribe(response => {
+            product.stock = response.newStock;
+            this.cartService.updateCart(response.product); 
+            this.cart = [...this.cartService.getCart()];
+            this.totalCompra = this.cartService.getTotal(); 
+            console.log('Carrito actualizado addhome:', this.cart);
+            this.cdr.detectChanges(); 
+            alert('Producto agregado al carrito');
         });
-      }
-      this.showForm = false;
-  }*/
- /* addOrUpdateProduct(product: any) {
-    console.log('Llamando a addOrUpdateProduct con:', product);
-    
-    if (this.selectedProduct) {
-      // Actualizar producto en la lista local (sin llamar al servicio)
-      const index = this.products.findIndex(p => p.id === this.selectedProduct.id);
-      if (index !== -1) {
-        this.products[index] = product;
-      }
-      this.filteredProducts = [...this.products]; // Actualiza la lista filtrada
     } else {
-      // Crear un nuevo producto directamente en la lista local
-      this.products.push(product);
-      this.filteredProducts = [...this.products]; // Actualiza la lista filtrada
+        alert('Cantidad inválida');
     }
-    this.showForm = false;
-    this.cdr.detectChanges(); 
-  }*/
+  }
+
+
+
+  
+
+  checkout() {
+    alert('Compra finalizada');
+    this.cart = [];
+    this.cartVisible = false;
+    this.totalCompra = 0;
+  }
+
   addOrUpdateProduct(product: any) {
     if (this.selectedProduct) {
       // Actualizar producto

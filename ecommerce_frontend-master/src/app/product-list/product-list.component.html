@@ -1,23 +1,33 @@
 <table>
-  <thead>
-      <tr>
-          <th>Nombre</th>
-          <th>Categoría</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Acciones</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let product of products">
-          <td>{{ product.nombre }}</td>
-          <td>{{ product.categoria }}</td>
-          <td>{{ product.precio | currency }}</td>
-          <td>{{ product.stock }}</td>
-          <td>
-              <button (click)="edit(product)">Editar</button>
-              <button (click)="delete(product.id)">Eliminar</button>
-          </td>
-      </tr>
-  </tbody>
-</table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.categoria }}</td>
+            <td>{{ product.precio | currency }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+                <input type="number" [(ngModel)]="product.quantity" min="1" [max]="product.stock" />
+            </td>
+            <td>
+                <button (click)="edit(product)">Editar</button>
+                <button (click)="delete(product.id)">Eliminar</button>
+                <button (click)="addToCart(product, product.quantity)" 
+                        [disabled]="!product.quantity || product.quantity > product.stock">
+                    Agregar al carrito
+                </button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  
+  

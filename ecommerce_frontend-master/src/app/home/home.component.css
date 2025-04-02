@@ -67,5 +67,39 @@
   border-radius: 10px;
   overflow: hidden;
 }
+.cart-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.cart-button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-count {
+  background: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 3px 7px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.cart-dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+}
 
 
